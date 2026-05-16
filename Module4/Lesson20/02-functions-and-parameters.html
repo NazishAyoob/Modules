@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 20 — Parameters and Optional Parameters</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Parameters and Optional Parameters</h1>
+  <p>JS supports default parameters and rest parameters.</p>
+
+  <div>
+    <pre id="out"></pre>
+  </div>
+  <script>
+    function greet(name='Guest'){ return `Hello, ${name}`; }
+    function sum(...nums){ return nums.reduce((s,n)=>s+n,0); }
+    document.getElementById('out').textContent = greet() + '\n' + greet('Ada') + '\nSum: ' + sum(1,2,3,4);
+  </script>
+</body>
+</html>

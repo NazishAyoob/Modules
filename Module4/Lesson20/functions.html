@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 20 — Intro to Functions</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Introduction to Functions in JavaScript</h1>
+  <p>Functions are reusable blocks of code. They can be declared, expressed, passed around, and returned.</p>
+
+  <h2>Function declaration vs expression</h2>
+  <pre id="demo"></pre>
+
+  <script>
+    function declared(a,b){ return a+b; }
+    const expressed = function(a,b){ return a*b; };
+    const arrow = (a,b) => a-b;
+    document.getElementById('demo').textContent = `declared(2,3)=${declared(2,3)}\nexpressed(2,3)=${expressed(2,3)}\narrow(5,2)=${arrow(5,2)}`;
+  </script>
+</body>
+</html>

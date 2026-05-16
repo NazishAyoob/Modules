@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson24 — HTML DOM Structure</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>DOM Structure</h1>
+  <p>Explore nodes, children, parentNode, and traversal techniques.</p>
+  <div id="tree"><p>One<div>Two</div></p></div>
+  <pre id="out"></pre>
+  <script>
+    const out = document.getElementById('out');
+    const tree = document.getElementById('tree');
+    function dump(node,depth=0){
+      let s = ' '.repeat(depth*2) + node.nodeName + '\n';
+      node.childNodes && node.childNodes.forEach(n=>{ if(n.nodeType===1) s+=dump(n,depth+1); });
+      return s;
+    }
+    out.textContent = dump(tree);
+  </script>
+</body>
+</html>

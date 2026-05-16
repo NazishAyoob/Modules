@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson24 — Real-time Application using JS</title>
+<style>body{font-family:Arial;padding:18px}.clock{font-size:20px}</style></head>
+<body>
+  <h1>Real-time Application Example (Clock & Live Input)</h1>
+  <div class="clock" id="clock">--:--:--</div>
+  <div>
+    <input id="name" placeholder="Type your name" />
+    <p>Hello, <span id="who">visitor</span></p>
+  </div>
+  <script>
+    // live clock
+    setInterval(()=>{
+      const now = new Date();
+      document.getElementById('clock').textContent = now.toLocaleTimeString();
+    },1000);
+    // live input binding
+    document.getElementById('name').addEventListener('input', (e)=>{
+      document.getElementById('who').textContent = e.target.value || 'visitor';
+    });
+  </script>
+</body>
+</html>

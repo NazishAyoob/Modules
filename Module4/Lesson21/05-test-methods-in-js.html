@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson21 — Test Methods in JS</title>
+  <style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:10px;white-space:pre-wrap}</style>
+</head>
+<body>
+  <h1>Test Methods in JavaScript</h1>
+  <p>This activity shows how to write simple tests for methods without external frameworks. It includes synchronous and asynchronous examples and a tiny assertion helper.</p>
+
+  <h2>Why test methods?</h2>
+  <p>Tests help ensure a method does what it should, prevent regressions, and document intended behavior.</p>
+
+  <h3>Simple assertion helper</h3>
+  <pre id="out"></pre>
+
+  <script>
+    const out = document.getElementById('out');
+    function assertEqual(actual, expected, name){
+      const pass = actual === expected;
+      const msg = `${pass ? 'PASS' : 'FAIL'} — ${name}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`;
+      out.textContent += msg + '\n';
+      return pass;
+    }
+
+    // Example methods to test
+    const MathUtils = {
+      add(a,b){ return a+b; },
+      square(n){ return n*n; },
+      // async example
+      async fetchNumber(delay, value){
+        return new Promise(resolve => setTimeout(()=>resolve(value), delay));
+      }
+    };
+
+    // Tests
+    (function runTests(){
+      out.textContent = 'Running tests...\n';
+      assertEqual(MathUtils.add(2,3),5,'add(2,3)');
+      assertEqual(MathUtils.square(4),16,'square(4)');
+
+      // Async test pattern: return a promise and assert inside
+      MathUtils.fetchNumber(50,7).then(v => {
+        assertEqual(v,7,'fetchNumber async');
+        out.textContent += 'All tests complete.';
+      }).catch(err => { out.textContent += 'Async test error: '+err; });
+    })();
+
+    // Activity: write a failing test to see the failure message, then fix the implementation.
+  </script>
+</body>
+</html>

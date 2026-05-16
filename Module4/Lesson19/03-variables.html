@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson 19 — Variables</title>
+  <style>body{font-family:Arial;padding:18px}</style>
+</head>
+<body>
+  <h1>Variables in JavaScript</h1>
+  <p>This page explains <code>var</code>, <code>let</code> and <code>const</code> with examples.</p>
+
+  <h2>Overview</h2>
+  <ul>
+    <li><code>var</code>: function-scoped, hoisted (legacy; avoid in modern code)</li>
+    <li><code>let</code>: block-scoped, mutable</li>
+    <li><code>const</code>: block-scoped, readonly binding (object contents still mutable)</li>
+  </ul>
+
+  <div>
+    <button id="show">Show examples</button>
+    <pre id="example"></pre>
+  </div>
+
+  <script>
+    const example = document.getElementById('example');
+    document.getElementById('show').addEventListener('click', ()=>{
+      example.textContent = '';
+      // var hoisting
+      example.textContent += 'var hoisting:\n';
+      example.textContent += (function(){
+        try{ console.log(x); }catch(e){}
+        var x = 5; return 'declared var after use: ' + x;
+      })() + '\n\n';
+
+      // let/const
+      let a = 1; const b = {n:2};
+      example.textContent += 'let a = ' + a + '\n';
+      example.textContent += 'const b.n = ' + b.n + '\n';
+      b.n = 10; example.textContent += 'after mutation b.n = ' + b.n + '\n';
+    });
+  </script>
+</body>
+</html>

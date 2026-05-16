@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson21 — Loops in JS</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Loops</h1>
+  <p>Demonstrates <code>for</code>, <code>for...of</code>, <code>for...in</code>, and <code>while</code>.</p>
+  <pre id="out"></pre>
+  <script>
+    const out = document.getElementById('out');
+    let r=''; for(let i=0;i<3;i++) r+=i+',';
+    r+=' | for...of: ';
+    for(const v of [3,4,5]) r+=v+',';
+    r+=' | for...in keys: ';
+    for(const k in {a:1,b:2}) r+=k+',';
+    out.textContent = r;
+  </script>
+</body>
+</html>

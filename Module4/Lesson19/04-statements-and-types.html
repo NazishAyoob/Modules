@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson 19 — Statements and Values/Types</title>
+  <style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:10px}</style>
+</head>
+<body>
+  <h1>Statements, Values and Types</h1>
+  <p>This file covers primitive types, objects, and common statements (if, switch, loops).</p>
+
+  <h2>Types</h2>
+  <ul>
+    <li>Primitives: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>undefined</code>, <code>null</code>, <code>symbol</code>, <code>bigint</code></li>
+    <li>Objects & Functions are reference types</li>
+  </ul>
+
+  <h3>Demo</h3>
+  <pre id="types"></pre>
+  <script>
+    const types = document.getElementById('types');
+    const sample = {n:1, s:'hi', ok:true, nothing:null, undef: undefined};
+    types.textContent = Object.keys(sample).map(k => `${k}: ${sample[k]} (${typeof sample[k]})`).join('\n');
+  </script>
+</body>
+</html>

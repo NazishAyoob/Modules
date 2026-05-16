@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson24 — JS Embedded in HTML</title>
+<style>body{font-family:Arial;padding:18px}</style></head>
+<body>
+  <h1>Using JavaScript inside HTML files</h1>
+  <p>This file demonstrates best practices for inline scripts: place scripts at the end of body, avoid polluting global scope, and initialize on DOMContentLoaded when needed.</p>
+  <button id="test">Test</button>
+  <script>
+    (function(){
+      document.getElementById('test').addEventListener('click', ()=>alert('Inline JS works'));
+    })();
+  </script>
+</body>
+</html>

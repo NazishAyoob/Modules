@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson 19 — Values and Types</title>
+  <style>body{font-family:Arial,Helvetica,sans-serif;padding:18px;line-height:1.5}pre{background:#f6f8fa;padding:10px;border-radius:6px;overflow:auto}section{margin-bottom:18px} .demo{padding:10px;border:1px solid #e6e6e6;border-radius:6px;background:#fff}</style>
+</head>
+<body>
+  <h1>Lesson 19 — Values and Types (Comprehensive)</h1>
+  <p>This page covers JavaScript values and types in detail: primitives, reference types, typeof behavior, coercion, and common pitfalls. Every topic includes runnable examples (inline JS) so you can explore results directly in the browser.</p>
+
+  <section>
+    <h2>1. Primitive types</h2>
+    <p>Primitives are immutable values and include: <code>number</code>, <code>string</code>, <code>boolean</code>, <code>undefined</code>, <code>null</code>, <code>symbol</code>, and <code>bigint</code>.</p>
+    <div class="demo">
+      <button id="runPrimitives">Show primitives</button>
+      <pre id="primitivesOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Reference types (objects)</h2>
+    <p>Objects, arrays, and functions are reference types: variables hold references to heap values. Mutating a referenced value affects all references to it.</p>
+    <div class="demo">
+      <button id="runRefs">Show references</button>
+      <pre id="refsOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. <code>typeof</code> and pitfalls</h2>
+    <p><code>typeof null</code> is an historical quirk that returns "object". Use explicit checks for <code>null</code> and arrays.</p>
+    <div class="demo">
+      <button id="runTypeof">Check types</button>
+      <pre id="typeOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Coercion and comparison</h2>
+    <p>JavaScript performs implicit type conversion in some operations. Prefer <code>===</code> and explicit parsing for safety.</p>
+    <div class="demo">
+      <button id="runCoercion">Run coercion examples</button>
+      <pre id="coerceOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Special numeric values</h2>
+    <p>Watch out for <code>NaN</code>, <code>Infinity</code>, and integer precision limits. Use <code>Number.isNaN()</code> and <code>Number.isFinite()</code>.</p>
+    <div class="demo">
+      <button id="runNumber">Number examples</button>
+      <pre id="numOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. Symbols & BigInt</h2>
+    <p><code>Symbol()</code> creates unique identifiers. <code>BigInt</code> supports integers beyond Number.MAX_SAFE_INTEGER.</p>
+    <div class="demo">
+      <button id="runSymbols">Symbols & BigInt</button>
+      <pre id="symOut"></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>7. Practical checklist</h2>
+    <ul>
+      <li>Prefer <code>let</code>/<code>const</code> over <code>var</code>.</li>
+      <li>Use <code>===</code>/<code>!==</code> to avoid coercion surprises.</li>
+      <li>Check arrays with <code>Array.isArray()</code>.</li>
+      <li>Use explicit parsing: <code>Number("123")</code> instead of relying on <code>+"123"</code> everywhere.</li>
+    </ul>
+  </section>
+
+  <script>
+  const init = () => {
+    const runPrimitives = document.getElementById('runPrimitives');
+    const runRefs = document.getElementById('runRefs');
+    const runTypeof = document.getElementById('runTypeof');
+    const runCoercion = document.getElementById('runCoercion');
+    const runNumber = document.getElementById('runNumber');
+    const runSymbols = document.getElementById('runSymbols');
+
+    if (!runPrimitives || !runRefs || !runTypeof || !runCoercion || !runNumber || !runSymbols) return;
+
+    /* ------------------ 1. Primitives ------------------ */
+    runPrimitives.addEventListener('click', () => {
+      const out = document.getElementById('primitivesOut');
+      out.textContent = '';
+      const n = 42;
+      const s = 'hello';
+      const b = true;
+      let u;
+      const nl = null;
+      const sym = Symbol('id');
+      const bi = 1234567890123456789012345678901234567890n;
+
+      out.textContent += `number: ${n} (typeof: ${typeof n})\n`;
+      out.textContent += `string: "${s}" (typeof: ${typeof s})\n`;
+      out.textContent += `boolean: ${b} (typeof: ${typeof b})\n`;
+      out.textContent += `undefined: ${u} (typeof: ${typeof u})\n`;
+      out.textContent += `null: ${nl} (typeof: ${typeof nl})  // historical quirk\n`;
+      out.textContent += `symbol: ${String(sym)} (typeof: ${typeof sym})\n`;
+      out.textContent += `bigint: ${bi} (typeof: ${typeof bi})\n`;
+    });
+
+    /* ------------------ 2. Reference Types ------------------ */
+    runRefs.addEventListener('click', () => {
+      const out = document.getElementById('refsOut');
+      out.textContent = '';
+
+      const o1 = {x: 1};
+      const o2 = o1;
+      o2.x = 99;
+
+      out.textContent += `o1.x after o2.x = 99 → ${o1.x} (same object)\n`;
+
+      const a1 = [1, 2];
+      const a2 = a1.slice();
+      a2.push(3);
+
+      out.textContent += `a1 = [${a1}]\na2 = [${a2}]\n`;
+
+      function f() { 
+        return function() { 
+          return 'I am a function (also an object)'; 
+        }; 
+      }
+
+      out.textContent += `typeof f → ${typeof f}; typeof f() → ${typeof f()}\n`;
+    });
+
+    /* ------------------ 3. typeof ------------------ */
+    runTypeof.addEventListener('click', () => {
+      const out = document.getElementById('typeOut');
+      out.textContent = '';
+
+      out.textContent += `typeof null → ${typeof null}\n`;
+      out.textContent += `Array.isArray([]) → ${Array.isArray([])}; typeof [] → ${typeof []}\n`;
+      out.textContent += `typeof /regex/ → ${typeof /regex/}\n`;
+    });
+
+    /* ------------------ 4. Coercion ------------------ */
+    runCoercion.addEventListener('click', () => {
+      const out = document.getElementById('coerceOut');
+      out.textContent = '';
+
+      out.textContent += `"" == 0 → ${("" == 0)}\n`;
+      out.textContent += `"5" + 1 → ${"5" + 1}\n`;
+      out.textContent += `"5" - 1 → ${"5" - 1}\n`;
+      out.textContent += `true == 1 → ${true == 1}\n`;
+
+      /* Fixed line you asked about */
+      out.textContent += `[] == false → ${([] == false)}; [] === false → ${([] === false)}\n`;
+    });
+
+    /* ------------------ 5. Numbers ------------------ */
+    runNumber.addEventListener('click', () => {
+      const out = document.getElementById('numOut');
+      out.textContent = '';
+
+      out.textContent += `NaN === NaN → ${NaN === NaN}\n`;
+      out.textContent += `Number.isNaN(NaN) → ${Number.isNaN(NaN)}\n`;
+      out.textContent += `1/0 → ${1/0}\n`;
+      out.textContent += `Number.isFinite(1/0) → ${Number.isFinite(1/0)}\n`;
+      out.textContent += `2**53 - 1 (MAX_SAFE_INTEGER) → ${Number.MAX_SAFE_INTEGER}\n`;
+    });
+
+    /* ------------------ 6. Symbols & BigInt ------------------ */
+    runSymbols.addEventListener('click', () => {
+      const out = document.getElementById('symOut');
+      out.textContent = '';
+
+      const sym1 = Symbol('id');
+      const sym2 = Symbol('id');
+
+      out.textContent += `sym1 === sym2 → ${sym1 === sym2}\n`;
+
+      const big = 9007199254740993n;
+      out.textContent += `BigInt example → ${big}\n`;
+    });
+  };
+
+  window.onload = init;
+</script>
+</body>
+</html>

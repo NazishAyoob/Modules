@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson24 — Introduction to HTML DOM</title>
+<style>body{font-family:Arial;padding:18px}.box{padding:12px;border:1px solid #ddd;margin-top:12px}</style></head>
+<body>
+  <h1>Introduction to HTML DOM</h1>
+  <p>The DOM is a tree representing the page. JavaScript can query nodes and change them dynamically.</p>
+  <div class="box">
+    <p id="demo">Original</p>
+    <button id="change">Change Text</button>
+  </div>
+  <script>
+    document.getElementById('change').addEventListener('click', ()=>{
+      document.getElementById('demo').textContent = 'Text changed at ' + new Date().toLocaleTimeString();
+    });
+  </script>
+</body>
+</html>

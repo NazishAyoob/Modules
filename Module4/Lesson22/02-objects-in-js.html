@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson22 — Objects in JS</title>
+<style>body{font-family:Arial;padding:18px}</style></head>
+<body>
+  <h1>Objects — creation and cloning</h1>
+  <pre id="out"></pre>
+  <script>
+    const a = {x:1};
+    const b = Object.assign({}, a); // shallow clone
+    const c = {...a};
+    document.getElementById('out').textContent = `a.x=${a.x}\nb.x=${b.x}\nc.x=${c.x}`;
+  </script>
+</body>
+</html>

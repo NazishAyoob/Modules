@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson23 — Math Object</title>
+  <style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:10px}</style>
+</head>
+<body>
+  <h1>Math Object — Methods and Activities</h1>
+  <p>The built-in <code>Math</code> object provides constants and functions for numeric operations.</p>
+
+  <h2>Common methods</h2>
+  <ul>
+    <li><code>Math.abs(x)</code></li>
+    <li><code>Math.round(x)</code>, <code>Math.floor(x)</code>, <code>Math.ceil(x)</code></li>
+    <li><code>Math.min(...)</code>, <code>Math.max(...)</code></li>
+    <li><code>Math.pow(x,y)</code>, <code>Math.sqrt(x)</code></li>
+    <li><code>Math.random()</code> (0–1)</li>
+    <li>Trigonometry: <code>Math.sin</code>, <code>Math.cos</code>, <code>Math.atan2</code></li>
+  </ul>
+
+  <div>
+    <button id="run">Run Math Examples</button>
+    <pre id="out"></pre>
+  </div>
+
+  <script>
+    const out = document.getElementById('out');
+    document.getElementById('run').addEventListener('click', ()=>{
+      out.textContent = '';
+      out.textContent += 'PI = ' + Math.PI + '\n';
+      out.textContent += 'abs(-5) = ' + Math.abs(-5) + '\n';
+      out.textContent += 'round(4.6) = ' + Math.round(4.6) + '\n';
+      out.textContent += 'floor(4.6) = ' + Math.floor(4.6) + '\n';
+      out.textContent += 'max(1,5,3) = ' + Math.max(1,5,3) + '\n';
+      out.textContent += 'random(0-100) = ' + Math.floor(Math.random()*100) + '\n';
+
+      // Activity: distance between two points using Math
+      const x1=2,y1=3,x2=7,y2=11;
+      const dx = x2-x1, dy = y2-y1;
+      const dist = Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2));
+      out.textContent += `distance between (${x1},${y1}) and (${x2},${y2}) = ${dist.toFixed(3)}`;
+    });
+  </script>
+</body>
+</html>

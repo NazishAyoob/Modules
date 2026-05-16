@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson22 — Properties of Object</title>
+<style>body{font-family:Arial;padding:18px}table{border-collapse:collapse}td,th{border:1px solid #ddd;padding:6px}</style></head>
+<body>
+  <h1>Properties</h1>
+  <p>Properties have descriptors: configurable, writable, enumerable. Use <code>Object.defineProperty</code> to control them.</p>
+  <pre id="out"></pre>
+  <script>
+    const o = {};
+    Object.defineProperty(o,'hidden',{value:42,writable:false,enumerable:false});
+    o.visible=7;
+    document.getElementById('out').textContent = `keys:${Object.keys(o)}\nhidden desc: ${Object.getOwnPropertyDescriptor(o,'hidden').writable}`;
+  </script>
+</body>
+</html>

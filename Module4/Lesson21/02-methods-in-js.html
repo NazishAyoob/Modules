@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson21 — Methods in JS</title>
+<style>body{font-family:Arial;padding:18px}</style></head>
+<body>
+  <h1>Methods in JavaScript</h1>
+  <p>Methods are functions attached to objects. Demonstrates <code>this</code>, binding, and prototypes.</p>
+  <pre id="out"></pre>
+  <script>
+    const user = {
+      name: 'Sam',
+      greet(){ return `hi ${this.name}` }
+    };
+    const greet = user.greet;
+    document.getElementById('out').textContent = user.greet() + '\n' + 'unbound greet() -> ' + (greet());
+  </script>
+</body>
+</html>

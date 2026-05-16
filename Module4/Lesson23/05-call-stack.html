@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson23 — Call Stack</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Call Stack and Execution</h1>
+  <p>Explains synchronous call stack, recursion depth, and stack traces with examples.</p>
+  <pre id="out"></pre>
+  <script>
+    function a(){ return b(); }
+    function b(){ return c(); }
+    function c(){ return 'end'; }
+    document.getElementById('out').textContent = `call sequence: ${a()}`;
+  </script>
+</body>
+</html>

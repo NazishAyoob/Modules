@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson22 — Arguments Object</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Arguments Object & Alternatives</h1>
+  <p>Older functions access <code>arguments</code>. Prefer rest parameters (<code>...args</code>).</p>
+  <pre id="out"></pre>
+  <script>
+    function oldStyle(){ return Array.from(arguments).join(','); }
+    function newStyle(...args){ return args.join(','); }
+    document.getElementById('out').textContent = `old: ${oldStyle(1,2,3)}\nnew: ${newStyle(1,2,3)}`;
+  </script>
+</body>
+</html>

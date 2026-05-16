@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson21 — Switch in JS</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Switch statement</h1>
+  <p>Use <code>switch</code> for multiple branches. Use <code>break</code> to avoid fall-through.</p>
+  <div>
+    <input id="val" placeholder="enter a day number 0-6" />
+    <button id="go">Check</button>
+    <pre id="out"></pre>
+  </div>
+  <script>
+    document.getElementById('go').addEventListener('click', ()=>{
+      const v = Number(document.getElementById('val').value);
+      let text;
+      switch(v){
+        case 0: text='Sunday'; break;
+        case 1: text='Monday'; break;
+        case 2: text='Tuesday'; break;
+        default: text='Other';
+      }
+      document.getElementById('out').textContent = text;
+    });
+  </script>
+</body>
+</html>

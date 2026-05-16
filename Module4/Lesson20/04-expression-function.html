@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 20 — Expression / Arrow Functions</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Function Expressions & Arrow Functions</h1>
+  <p>Arrow functions are shorter and have lexical <code>this</code>.</p>
+  <pre id="out"></pre>
+  <script>
+    const nums = [1,2,3,4];
+    const doubled = nums.map(n => n*2);
+    document.getElementById('out').textContent = 'nums='+nums+' -> doubled='+doubled;
+  </script>
+</body>
+</html>

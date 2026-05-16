@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson23 — Object Data Structure</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Data Structures: Objects vs Arrays</h1>
+  <p>When to use objects (keyed) vs arrays (ordered). Examples of maps and sets.</p>
+  <pre id="out"></pre>
+  <script>
+    const map = {id:1,name:'A'}; const list=[map];
+    document.getElementById('out').textContent = `map keys=${Object.keys(map)}\nlist length=${list.length}`;
+  </script>
+</body>
+</html>

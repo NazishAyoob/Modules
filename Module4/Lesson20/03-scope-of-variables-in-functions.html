@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lesson 20 — Scope of Variables in Functions</title>
+<style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:8px}</style></head>
+<body>
+  <h1>Variable Scope</h1>
+  <p>Explains local, block, and global scope with examples and closures.</p>
+  <pre id="out"></pre>
+  <script>
+    var globalVar = 'global';
+    function outer(){
+      let outerLet = 'outer';
+      function inner(){
+        const innerConst = 'inner';
+        return [globalVar, outerLet, innerConst].join('|');
+      }
+      return inner();
+    }
+    document.getElementById('out').textContent = outer();
+  </script>
+</body>
+</html>

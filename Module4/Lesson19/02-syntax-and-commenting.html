@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lesson 19 — Syntax, Guide and Commenting</title>
+  <style>body{font-family:Arial;padding:18px}pre{background:#f6f8fa;padding:10px}</style>
+</head>
+<body>
+  <h1>Syntax and Commenting</h1>
+  <p>This page shows JavaScript syntax rules, best practices, and how to comment code for clarity.</p>
+
+  <h2>Statements and semicolons</h2>
+  <p>JavaScript uses statements separated by semicolons, though automatic semicolon insertion (ASI) exists — prefer explicit semicolons in production code for predictability.</p>
+
+  <h2>Comments</h2>
+  <pre>// single-line comment
+/*
+   multi-line comment
+*/</pre>
+
+  <h2>Naming and formatting</h2>
+  <p>Use descriptive names, camelCase for variables and functions, and consistent indentation.</p>
+
+  <h3>Examples and lints</h3>
+  <div>
+    <pre id="out"></pre>
+  </div>
+  <script>
+    const out = document.getElementById('out');
+    function goodName(){ return 'Use descriptive camelCase names'; }
+    // Demonstrate a well-formatted function
+    out.textContent = 'goodName() → ' + goodName();
+  </script>
+</body>
+</html>
